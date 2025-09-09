@@ -1,0 +1,46 @@
+\documentclass[11pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{setspace}
+\geometry{margin=1in}
+
+\begin{document}
+\doublespacing
+\vspace*{-2cm} 
+\begin{center}
+    {\LARGE \textbf{AI Investment and Business Returns}}\\[0.5em]
+    {\large Correlation or Causation?}\\[1em]
+    Tuna Akın\\
+    \href{https://mlq.ai/media/quarterly_decks/v0.1_State_of_AI_in_Business_2025_Report.pdf}{State of AI in Business 2025 by MIT NANDA}\\
+    \today
+\end{center}
+
+\section*{Summary}
+The report documents \$30--40B in enterprise GenAI spending yet finds that about 95\% of organizations see no measurable ROI; only around 5\% of task-specific tools reach production and impact P\&L. The bottleneck is not model quality or regulation but poor workflow integration and lack of learning/memory in systems. Spending skews toward sales and marketing because outcomes are visible, while higher-ROI gains often arise in back-office automation (finance, operations) that are underfunded. Sector patterns matter: meaningful disruption concentrates in technology and media, while seven of nine sectors show little structural change.
+
+\section*{Regression Model}
+We can summarize the article’s headline relationship with a simple bivariate model:
+\[
+ROI_i = \beta_0 + \beta_1 \, InvestmentAI_i + \varepsilon_i,
+\]
+where $ROI_i$ is firm $i$’s return on investment and $InvestmentAI_i$ is spending on AI initiatives.
+
+\section*{Causality Concerns}
+The article may suggest (or readers may infer) that more AI spending \emph{causes} higher ROI. However, $InvestmentAI_i$ is unlikely exogenous:
+
+\begin{itemize}
+    \item \textbf{Industry mix:} Tech/media firms both invest more and show higher ROI; pooling sectors biases $\hat{\beta}_1$ upward if high-ROI sectors are heavier investors.
+    \item \textbf{Management quality / readiness:} Adaptive firms invest early and execute better, raising ROI even absent AI (omitted variable bias).
+    \item \textbf{Implementation strategy:} External partnerships reach deployment about twice as often as internal builds; strategy is a mediator between investment and ROI.
+    \item \textbf{Spend composition:} Budgets favor visible front-office tools, while ROI often comes from back-office automation; misallocation can attenuate or reverse returns at a given spend level.
+\end{itemize}
+
+Directionally, selection on strong firms (and favorable sectors) tends to \emph{inflate} $\hat{\beta}_1$ (positive bias). Yet the report’s central fact—that most firms realize zero ROI despite substantial spend—implies the naive correlation exaggerates the average causal effect of investment on ROI for typical adopters.
+
+\section*{Conclusion}
+“More AI spend $\rightarrow$ higher ROI” is, at best, a fragile correlation. Causality hinges on \emph{how} capital is deployed: workflow integration, learning/memory, sector context, and build-vs-buy strategy. Only targeted, process-specific deployments deliver reliable ROI; broad spending alone does not.
+
+\end{document}
